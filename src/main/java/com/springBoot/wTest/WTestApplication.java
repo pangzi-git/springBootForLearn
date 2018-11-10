@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("AlibabaClassMustHaveAuthor")
 @Controller
 @SpringBootApplication
 @ComponentScan(basePackages="com.springBoot")

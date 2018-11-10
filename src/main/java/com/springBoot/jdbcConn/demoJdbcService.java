@@ -23,6 +23,7 @@ public class demoJdbcService {
     public List<userEntity> queryContent(Map map) {
         String sql = "select 1 id from  dual";
         return jdbcTemplate.query(sql, new RowMapper<userEntity>() {
+            @Override
             public userEntity mapRow(ResultSet rs, int rowNum)
                     throws SQLException {
                 userEntity cc = new userEntity();
@@ -36,6 +37,7 @@ public class demoJdbcService {
     public List<userEntity> queryTest() {
         String sql = "select 1 from  dual";
         return jdbcTemplate.query(sql, new RowMapper<userEntity>() {
+            @Override
             public userEntity mapRow(ResultSet rs, int rowNum)
                     throws SQLException {
                 userEntity cc = new userEntity();
