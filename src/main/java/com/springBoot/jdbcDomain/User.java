@@ -1,12 +1,22 @@
 package com.springBoot.jdbcDomain;
 
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.Id;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+
+
+@Table(name="user")
+@Entity
 public class User {
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GenericGenerator(name="",strategy="")
+    private int id  ;
 
     private String name;
 
