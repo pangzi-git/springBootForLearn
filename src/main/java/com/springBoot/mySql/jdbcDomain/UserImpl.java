@@ -1,6 +1,6 @@
-package com.springBoot.jdbcDomain;
+package com.springBoot.mySql.jdbcDomain;
 
-import com.springBoot.jdbcService.UserService;
+import com.springBoot.mySql.jdbcService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -24,7 +24,7 @@ public class UserImpl implements UserService {
     private PlatformTransactionManager platformTransactionManager;
 
     @Override
-    @Transactional(rollbackForClassName="com.springBoot.jdbcService.UserService")
+    @Transactional(rollbackForClassName="com.springBoot.mySql.jdbcService.UserService")
     public boolean save(User user) {
         Boolean result = jdbcTemplate.execute("INSERT INTO user(name,age) VALUES(?,?);", new PreparedStatementCallback<Boolean>() {
 

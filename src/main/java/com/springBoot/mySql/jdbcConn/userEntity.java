@@ -1,4 +1,4 @@
-package com.springBoot.jdbcConn;
+package com.springBoot.mySql.jdbcConn;
 
 public class userEntity {
     //id

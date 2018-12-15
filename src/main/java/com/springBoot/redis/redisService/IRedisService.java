@@ -1,4 +1,4 @@
-package com.springBoot.redisService;
+package com.springBoot.redis.redisService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
@@ -29,9 +29,9 @@ public abstract class IRedisService <T> {
          * @param expire 过期时间(单位:秒),传入 -1 时表示不设置过期时间
          */
         public void put(String key, T doamin, long expire) {
-            hashOperations.put(getRedisKey(), key, doamin);
+            hashOperations.put(getRedisKey(), key,doamin );
             if (expire != -1) {
-                redisTemplate.expire(getRedisKey(), expire, TimeUnit.SECONDS);
+                redisTemplate.expire(getRedisKey(), expire,TimeUnit.SECONDS);
             }
         }
 

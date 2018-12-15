@@ -1,7 +1,7 @@
-package com.springBoot.jdbcConn;
+package com.springBoot.mySql.jdbcConn;
 
-import com.springBoot.jdbcDomain.User;
-import com.springBoot.jdbcService.UserService;
+import com.springBoot.mySql.jdbcDomain.User;
+import com.springBoot.mySql.jdbcService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

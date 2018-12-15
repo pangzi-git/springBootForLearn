@@ -1,4 +1,4 @@
-package com.springBoot.jdbcDomain;
+package com.springBoot.mySql.jdbcDomain;
 
 
 import org.hibernate.annotations.GenericGenerator;

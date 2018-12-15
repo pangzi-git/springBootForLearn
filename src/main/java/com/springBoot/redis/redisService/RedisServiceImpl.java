@@ -1,5 +1,6 @@
-package com.springBoot.redisService;
+package com.springBoot.redis.redisService;
 
+import com.springBoot.redis.redisDomain.RedisModel;
 import org.springframework.stereotype.Service;
 
 @Service

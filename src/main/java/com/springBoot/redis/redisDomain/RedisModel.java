@@ -1,4 +1,4 @@
-package com.springBoot.redisService;
+package com.springBoot.redis.redisDomain;
 
 import java.io.Serializable;
 
@@ -39,4 +39,8 @@ public class RedisModel implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+
+
+
+
 }

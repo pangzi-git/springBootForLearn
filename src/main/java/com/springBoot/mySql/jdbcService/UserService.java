@@ -1,6 +1,6 @@
-package com.springBoot.jdbcService;
+package com.springBoot.mySql.jdbcService;
 
-import com.springBoot.jdbcDomain.User;
+import com.springBoot.mySql.jdbcDomain.User;
 
 
 /**
