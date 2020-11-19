@@ -1,0 +1,98 @@
+package com.springBoot;
+
+import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+ 
+public class CarDemoTest {
+    @Data
+    class Car {
+        private String name;
+        private Integer way;
+        private Integer wait = 0;
+        private String status;
+
+        public Car(String name, Integer way) {
+            this.name = name;
+            this.way = way;
+        }
+
+        @Override
+        public String toString() {
+            return "Car{" +
+                    "name='" + name + '\'' +
+                    ", way=" + way +
+                    ", wait=" + wait +
+                    ", status=" + status +
+                    '}';
+        }
+    }
+
+    private void doTrans(Integer roadTime, Integer loadTime) {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("car1", 2 % (roadTime + loadTime)));
+        cars.add(new Car("car2", 3 % (roadTime + loadTime)));
+        cars.add(new Car("car3", 8 % (roadTime + loadTime)));
+        cars.add(new Car("car4", 15 % (roadTime + loadTime)));
+        cars.add(new Car("car5", 21 % (roadTime + loadTime)));
+
+        int floap = 0;
+        int unLoadTime = 0;
+        while (floap < 1000) {
+
+            Boolean load_flag = false;
+            cars = cars.stream().sorted(Comparator.comparingInt(Car::getWay).reversed()).collect(Collectors.toList());
+            for (int i = 0; i < cars.size(); i++) {
+                Car c = cars.get(i);
+                c.setWay((c.getWay() + 1) % (roadTime + loadTime));
+                if (c.getWay() < roadTime) {
+                    c.setStatus("running");
+                } else {
+                    if (load_flag) {
+                        c.setWay(c.getWay() - 1);
+                        c.setWait(c.getWait() + 1);
+                        c.setStatus("waiting");
+                    } else {
+                        load_flag = true;
+                        c.setStatus("loading");
+                    }
+                }
+//                System.out.println(c.toString());
+                cars.set(i, c);
+            }
+            if (!load_flag) {
+                unLoadTime++;
+            }
+            if (floap % (roadTime + loadTime) == 0) {
+                System.out.println("round  " + floap);
+                System.out.println("=====>unLoadTime  " + unLoadTime);
+                for (Car car : cars) {
+                    System.out.println("=====>" + car.toString());
+                }
+            }
+            System.out.println("round  " + floap);
+            floap++;
+            //Todo 加车或者减车
+
+        }
+
+        for (Car car : cars) {
+            System.out.println("=====>" + car.toString());
+        }
+        System.out.println("unLoadTime=====>" + unLoadTime);
+    }
+
+    private List<Car> doCarCal(List<Car> cars, Integer unLoadTime) {
+        return cars;
+    }
+
+    public static void main(String[] args) {
+        CarDemoTest carDemoTest = new CarDemoTest();
+        carDemoTest.doTrans(23, 5);
+    }
+
+}
