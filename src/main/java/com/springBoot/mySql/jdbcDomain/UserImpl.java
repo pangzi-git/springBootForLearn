@@ -25,7 +25,7 @@ public class UserImpl implements UserService {
 
     @Override
     @Transactional(rollbackForClassName="com.springBoot.mySql.jdbcService.UserService")
-    public boolean save(User user) {
+    public boolean save(final User user) {
         Boolean result = jdbcTemplate.execute("INSERT INTO user(name,age) VALUES(?,?);", new PreparedStatementCallback<Boolean>() {
 
             @Override
